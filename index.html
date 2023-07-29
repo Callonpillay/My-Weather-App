@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather App</title>
+    <meta charset="UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div id="weather" class="weather-container">
+            <header>
+                <ul class="country">
+                    <li>Durban</li>
+                    <li>Johannesburg</li>
+                    <li>Cape Town</li>
+
+                </ul>
+
+            </header>
+            <div class="my-app">
+                <div class="form" id="searching-form">
+                    <form>
+                        <input type="text" placeholder="Enter a city..." autofocus="on" id="searchCity" />
+                        <input type="submit" class="btn btn-outline-success" value="Search" />
+                        <input type="click" class="btn btn-outline-primary" value="Current" />
+                    </form>
+                </div>
+                <div class="summary">
+                    <div class="summary-header">
+                        <h1 id="city">Durban</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="boxfix">
+
+                                <div class="float-temp" id="temp">26</div>
+
+                                <span class="float-units">
+                                    <a href="#" id="c">°C</a> | <a href="#" id="f">°F</a>
+                                </span>
+                                <div style=font-size:60px " class=" float-weather">☀️</div>
+                                <div class="forecast-detail">Precipitation: 91%</div>
+                                <div class="forecast-detail">Humidity: 67%</div>
+                                <div class="forecast-detail">Wind: 8 km/h</div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="weather-detail"><strong>Weather</strong></div>
+                            <div class="weather-detail" id="now">Sunny Day</div>
+                            <div class="weather-detail" id="time">Saturday 22:00 PM</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-2 col xs-offset-1">
+                                <div class="forecast-day">Sun</div>
+                                <div class="forecast-icon">⛅</div>
+                                <div class="forecast-temperature">28°</div>
+                            </div>
+                            <div class="col-xs-2 col xs-offset-1">
+                                <div class="forecast-day">Mon</div>
+                                <div class="forecast-icon">🌧️</div>
+                                <div class="forecast-temperature">19°</div>
+                            </div>
+                            <div class="col-xs-2 col xs-offset-1">
+                                <div class="forecast-day">Tues</div>
+                                <div class="forecast-icon">🌧️</div>
+                                <div class="forecast-temperature">16°</div>
+                            </div>
+                            <div class="col-xs-2 col xs-offset-1">
+                                <div class="forecast-day">Wed</div>
+                                <div class="forecast-icon">🌧️</div>
+                                <div class="forecast-temperature">20°</div>
+                            </div>
+                            <div class="col-xs-2 col xs-offset-1">
+                                <div class="forecast-day">Thurs</div>
+                                <div class="forecast-icon">☀️</div>
+                                <div class="forecast-temperature">28°</div>
+                            </div>
+                            <div class="col-xs-2 col xs-offset-1">
+                                <div class="forecast-day">Fri</div>
+                                <div class="forecast-icon">☀️</div>
+                                <div class="forecast-temperature">34°</div>
+                            </div>
+                            <div class="col-xs-2 col xs-offset-1">
+                                <div class="forecast-day">Sat</div>
+                                <div class="forecast-icon">🌧️</div>
+                                <div class="forecast-temperature">17°</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="font-family: 'Yellowtail', cursive;" class="footer">
+            Coded by
+            <a href="https://www.linkedin.com/in/callon-pillay-30891b188/" target="_blank">
+                <span style="font-family: 'Yellowtail', cursive;" class="myName">Callon Pillay</span>
+            </a>
+            <script src="src/index.js"></script>
+</body>
+
+</html>
