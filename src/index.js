@@ -108,10 +108,9 @@ let iconElement = document.querySelector("#icon");
   precipitationElement.innerHTML = `Precipitation: ${precipitation}%`;
   windElement.innerHTML = `Wind Speed: ${windSpeed}km/h`;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
-  iconElement.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  iconElement.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt="${response.data.weather[0].description}">`;
+
+;
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
 }
