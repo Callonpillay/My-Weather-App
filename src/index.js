@@ -100,6 +100,7 @@ function showWeather(response) {
   let humidityElement = document.querySelector("#humidity");
   let humidity = Math.round(response.data.main.humidity);
 
+let iconElement = document.querySelector("#icon");
 
   temperatureElement.innerHTML = `${temperature}`;
   description.innerHTML = response.data.weather[0].description;
@@ -107,8 +108,15 @@ function showWeather(response) {
   precipitationElement.innerHTML = `Precipitation: ${precipitation}%`;
   windElement.innerHTML = `Wind Speed: ${windSpeed}km/h`;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
- 
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
+
 
 
 function showPosition(position) {
