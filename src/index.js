@@ -93,9 +93,23 @@ function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temp");
   let description = document.querySelector("#now");
+  let precipitationElement = document.querySelector("#precipitation");
+  let precipitation = Math.round(response.data.clouds.all);
+  let windElement = document.querySelector("#wind");
+  let windSpeed = Math.round(response.data.wind.speed);
+  let humidityElement = document.querySelector("#humidity");
+  let humidity = Math.round(response.data.main.humidity);
+  let descriptionIcon = document.querySelector("#description-icon");
   temperatureElement.innerHTML = `${temperature}`;
   description.innerHTML = response.data.weather[0].description;
+
+  precipitationElement.innerHTML = `Precipitation: ${precipitation}%`;
+  windElement.innerHTML = `Wind Speed: ${windSpeed}km/h`;
+  humidityElement.innerHTML = `Humidity: ${humidity}%`;
+  descriptionIcon.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+ 
 }
+
 
 function showPosition(position) {
   let apiKey = "765043773672fdd9cdd0cd97e3583444";
