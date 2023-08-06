@@ -100,6 +100,11 @@ function showWeather(response) {
   let humidityElement = document.querySelector("#humidity");
   let humidity = Math.round(response.data.main.humidity);
   let descriptionIcon = document.querySelector("#description-icon");
+
+   iconElement.setAttribute("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+  iconElement.setAttribute("alt",response.data.weather[0].description);
+
   temperatureElement.innerHTML = `${temperature}`;
   description.innerHTML = response.data.weather[0].description;
 
@@ -119,6 +124,8 @@ function showPosition(position) {
   axios.get(apiUrl).then(showWeather);
 }
 
+let iconElement = document.querySelector("#icon");
+
 function getPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
@@ -126,3 +133,40 @@ function getPosition(event) {
 
 let locationButton = document.querySelector(".btn.btn-outline-primary");
 locationButton.addEventListener("click", getPosition);
+
+function displayForecast(response){
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function(forecastDay,index){
+    if (index < 6){ 
+    forecastHTML = forecastHTML + `<div class = "col-2">
+   <div class="forecast-date">
+                                    ${formatDay(forecastDay.dt)}
+                                    </div> 
+                                    <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="42"/>
+                                    <div class = "forecast-temperature">
+                                    <span class="forecast-temperature-max">
+                                     ${Math.round(forecastDay.temp.max)}°
+                                    </span>
+                                    <span class="forecast-temperature-min">
+                                     ${Math.round(forecastDay.temp.min)}°
+                                    </span>
+
+                                    </span>
+                                        
+                                    </div>
+              
+                                  </div> `;}
+
+
+  });
+ 
+
+ forecastHTML = forecastHTML + `</div>`;
+ forecastElement.innerHTML = forecastHTML;
+}                                 
+
+
