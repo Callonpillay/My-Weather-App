@@ -119,8 +119,6 @@ function showPosition(position) {
   axios.get(apiUrl).then(showWeather);
 }
 
-let iconElement = document.querySelector("#icon");
-
 function getPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
