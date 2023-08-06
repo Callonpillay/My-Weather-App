@@ -99,18 +99,14 @@ function showWeather(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   let humidityElement = document.querySelector("#humidity");
   let humidity = Math.round(response.data.main.humidity);
-  let descriptionIcon = document.querySelector("#description-icon");
 
-   iconElement.setAttribute("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
-  iconElement.setAttribute("alt",response.data.weather[0].description);
   temperatureElement.innerHTML = `${temperature}`;
   description.innerHTML = response.data.weather[0].description;
 
   precipitationElement.innerHTML = `Precipitation: ${precipitation}%`;
   windElement.innerHTML = `Wind Speed: ${windSpeed}km/h`;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
-  descriptionIcon.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
  
 }
 
