@@ -135,7 +135,9 @@ locationButton.addEventListener("click", getPosition);
 
 function displayForecast(response) {
   let forecastData = response.data.daily;
-  let forecastElement = document.querySelector("#forecast"); // Fixed this line
+
+  let forecastElement = document.querySelector(".container");
+
   let forecastHTML = `<div class="row">`;
 
   forecastData.forEach(function (forecastDataDay, index) {
@@ -157,10 +159,12 @@ function displayForecast(response) {
             <span class="weather-forecast-max">${Math.round(
               forecastDataDay.temp.max
             )}</span>
+
             <span class="weather-forecast-min">${Math.round(
               forecastDataDay.temp.min
             )}</span>
           </div>
+          
         </div>
         `;
     }
