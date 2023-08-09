@@ -134,20 +134,39 @@ let locationButton = document.querySelector(".btn.btn-outline-primary");
 locationButton.addEventListener("click", getPosition);
 
 function displayForecast(response) {
-  let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#forecast");
+  let forecastData = response.data.daily;
+
+  let forecastElement = document.querySelector(".container");
+
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (forecastDay, index) {
+
+  forecastData.forEach(function (forecastDataDay, index) {
     if (index < 6) {
-      forecastHTML += `
-        <div class="col-xs-2 col-xs-offset-1">
-          <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
-          <img src="${forecastDay.condition.icon_url}" alt="" width="42" />
+      forecastHTML =
+        forecastHTML +
+        `<div col-xs-2 col xs-offset-1">
+          <div class="weather-forecast-date">${formatDay(
+            forecastDataDay.dt
+          )}</div>
+           <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDataDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
           <div class="forecast-temperature">
-            <span class="">${Math.round(forecastDay.temperature.maximum)}º</span>
-            <span class="weather-forecast-temperature-min"> ${Math.round(forecastDay.temperature.minimum)}º</span>
+            <span class="forecast-temperature-max">${Math.round(
+              forecastDataDay.temp.max
+            )}</span>
+
+            <span class="forecast-temperature-min">${Math.round(
+              forecastDataDay.temp.min
+            )}</span>
           </div>
-        </div>`;
+          
+        </div>
+        `;
     }
   });
 
