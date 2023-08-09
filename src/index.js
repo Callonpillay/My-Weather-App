@@ -132,3 +132,25 @@ function getPosition(event) {
 
 let locationButton = document.querySelector(".btn.btn-outline-primary");
 locationButton.addEventListener("click", getPosition);
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML +=
+        `<div class="col-xs-2 col-xs-offset-1">
+          <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
+          <img src="${forecastDay.condition.icon_url}" alt="" width="42" />
+          <div class="forecast-temperature">
+            <span class="">${Math.round(forecastDay.temperature.maximum)}º</span>
+            <span class="weather-forecast-temperature-min"> ${Math.round(forecastDay.temperature.minimum)}º</span>
+          </div>
+        </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
