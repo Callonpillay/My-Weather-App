@@ -133,3 +133,39 @@ function getPosition(event) {
 let locationButton = document.querySelector(".btn.btn-outline-primary");
 locationButton.addEventListener("click", getPosition);
 
+function displayForecast(response) {
+  let forecastData = response.data.daily;
+  let forecastElement = document.querySelector("#forecast"); // Fixed this line
+  let forecastHTML = `<div class="row">`;
+
+  forecastData.forEach(function (forecastDataDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2 date-forecast text-center">
+          <div class="weather-forecast-date">${formatDay(
+            forecastDataDay.dt
+          )}</div>
+           <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDataDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
+          <div class="weather-forecast">
+            <span class="weather-forecast-max">${Math.round(
+              forecastDataDay.temp.max
+            )}</span>
+            <span class="weather-forecast-min">${Math.round(
+              forecastDataDay.temp.min
+            )}</span>
+          </div>
+        </div>
+        `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
