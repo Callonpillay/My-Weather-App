@@ -133,26 +133,3 @@ function getPosition(event) {
 let locationButton = document.querySelector(".btn.btn-outline-primary");
 locationButton.addEventListener("click", getPosition);
 
-forecastHTML =
-  forecastHTML +
-  `<div class="col-xs-2 col-xs-offset-1">
-      <div class="weather-forecast-date">${formatDay(forecastDataDay.dt)}</div>
-       <img
-      src="http://openweathermap.org/img/wn/${
-        forecastDataDay.weather[0].icon
-      }@2x.png"
-      alt=""
-      width="42"
-    />
-      <div class="forecast-temperature">
-        <span class="forecast-temperature-max">${Math.round(
-          forecastDataDay.temp.max
-        )}°</span>
-        <span class="forecast-temperature-min">${Math.round(
-          forecastDataDay.temp.min
-        )}°</span>
-      </div>
-    </div>
-    `;
-
-    let forecastElement = document.querySelector("#forecast");
